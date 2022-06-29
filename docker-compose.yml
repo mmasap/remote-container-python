@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ".:/app"
+      - "~/.ssh:/root/.ssh"
       - ".devcontainer/.aws:/root/.aws"
     # keep contaienr running
     command: /bin/sh -c "while :; do sleep 10; done"
