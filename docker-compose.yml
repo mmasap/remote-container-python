@@ -9,7 +9,7 @@ services:
       - ".:/app"
       - "~/.ssh:/root/.ssh"
       - ".devcontainer/.aws:/root/.aws"
-    # keep contaienr running
+    # keep container running
     command: /bin/sh -c "while :; do sleep 10; done"
     depends_on:
       - localstack
