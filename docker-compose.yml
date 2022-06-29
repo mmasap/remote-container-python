@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  python:
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/app"
+      - ".devcontainer/.aws:/root/.aws"
+    # keep contaienr running
+    command: /bin/sh -c "while :; do sleep 10; done"
+    depends_on:
+      - localstack
+  localstack:
+    image: localstack/localstack
+    ports:
+      - 4566:4566
+    environment:
+      - DATA_DIR=/data
+    volumes:
+      - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"

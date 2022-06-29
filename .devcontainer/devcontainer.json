@@ -1,0 +1,27 @@
+{
+  "name": "remote-container-python",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "python",
+  "workspaceFolder": "/app",
+  "extensions": [
+    "streetsidesoftware.code-spell-checker",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "oderwat.indent-rainbow",
+    "ms-python.python"
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/usr/local/bin/black",
+    "python.linting.banditEnabled": true,
+    "python.linting.banditPath": "/usr/local/bin/bandit",
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "/usr/local/bin/flake8",
+    "python.linting.flake8Args": [
+      "--max-line-length",
+      "88"
+    ]
+  },
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh"
+}
