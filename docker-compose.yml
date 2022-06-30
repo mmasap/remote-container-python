@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ".:/app"
-      - "~/.ssh:/root/.ssh"
-      - ".devcontainer/.aws:/root/.aws"
+      - .:/app
+      - ~/.ssh:/root/.ssh
+      - ~/.aws:/root/.aws
     # keep container running
     command: /bin/sh -c "while :; do sleep 10; done"
     depends_on:
@@ -18,6 +18,6 @@ services:
     ports:
       - 4566:4566
     environment:
-      - DATA_DIR=/data
+      - DATA_DIR=/tmp/localstack/data
     volumes:
-      - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
+      - ./.devcontainer/localstack:/tmp/localstack
