@@ -1,0 +1,15 @@
+version: 0.2
+
+phase:
+  pre_build:
+    commands:
+      - echo "pre_build"
+      - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin ${REGISTRY_ID}
+  build:
+    commands:
+      - echo "build"
+      - docker build -t ${IMAGE_REPOSITORY_NAME}:${CODEBUILD_SOURCE_VERSION} .
+  post_build:
+    commands:
+      - echo "post_build"
+      - docker push ${IMAGE_REPOSITORY_NAME}:${CODEBUILD_SOURCE_VERSION}
