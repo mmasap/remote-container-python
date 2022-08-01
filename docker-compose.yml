@@ -19,5 +19,6 @@ services:
       - 4566:4566
     environment:
       - DATA_DIR=/tmp/localstack/data
+      - SERVICES=s3
     volumes:
       - ./.devcontainer/localstack:/tmp/localstack
